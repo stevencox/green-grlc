@@ -4,15 +4,14 @@
 #+ tags:
 #+  - 01_archive
 
-
-            prefix drugbank:      <http://chem2bio2rdf.org/drugbank/resource/>
-            prefix drugbank_drug: <http://chem2bio2rdf.org/drugbank/resource/drugbank_drug/>
-            prefix ctd:           <http://chem2bio2rdf.org/ctd/resource/>
-            prefix mesh.disease:          <http://bio2rdf.org/mesh:> 
-            select distinct ?uniprotGeneID where {
-               values ( ?diseaseID ) { ( $diseaseID ) }
-               ?dbInter     drugbank:gene               ?uniprotGeneID .
-               ?drugID      drugbank:CID                ?pubchemCID.
-               ?ctd_disease ctd:diseaseid               ?diseaseID ;
-                            ctd:cid                     ?pubchemCID .
-            }
+prefix drugbank:      <http://chem2bio2rdf.org/drugbank/resource/>
+prefix drugbank_drug: <http://chem2bio2rdf.org/drugbank/resource/drugbank_drug/>
+prefix ctd:           <http://chem2bio2rdf.org/ctd/resource/>
+prefix mesh.disease:          <http://bio2rdf.org/mesh:> 
+select distinct ?uniprotGeneID where {
+  values ( ?diseaseID ) { ( $diseaseID ) }
+  ?dbInter     drugbank:gene               ?uniprotGeneID .
+  ?drugID      drugbank:CID                ?pubchemCID.
+  ?ctd_disease ctd:diseaseid               ?diseaseID ;
+     ctd:cid                     ?pubchemCID .
+}
